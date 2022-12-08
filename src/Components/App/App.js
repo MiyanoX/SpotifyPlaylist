@@ -4,15 +4,34 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
 
+const track1 = {name: 'new_track1', artist: 'new_friend', album: 'new_album', id: 1};
+const track2 = {name: 'new_track2', artist: 'new_friend', album: 'new_album', id: 2};
+const track3 = {name: 'new_track3', artist: 'new_friend', album: 'new_album', id: 3};
+const track4 = {name: 'new_track4', artist: 'new_friend', album: 'new_album', id: 4};
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    const track = {name: 'new_track', artist: 'new_friend', album: 'new_album', id: 1};
     this.state = {
-      searchResults: [track, track, track],
+      searchResults: [track1, track2, track3, track4],
       playlistName: 'My Playlist',
-      playlistTracks: [track]
+      playlistTracks: [track4]
     };
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
+  }
+
+  addTrack(track) {
+    const currentTracks = this.state.playlistTracks;
+    if (currentTracks.find((currentTrack) => track.id === currentTrack.id)) {
+      return
+    }
+    currentTracks.push(track);
+    this.setState({playlistTracks: currentTracks});
+  };
+
+  removeTrack(track) {
+    const currentTracks = this.state.playlistTracks.filter(currentTrack => track.id !== currentTrack.id);
+    this.setState({playlistTracks: currentTracks});
   }
 
   render() {
@@ -22,14 +41,16 @@ export class App extends React.Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults}/>
-            <Playlist name={this.state.playlistName} tracks={this.state.playlistTracks} />
+            <SearchResults 
+              searchResults={this.state.searchResults}
+              onAdd={this.addTrack} />
+            <Playlist 
+              name={this.state.playlistName}
+              tracks={this.state.playlistTracks}
+              onRemove={this.removeTrack} />
           </div>
         </div>
       </div>
     );
-  }
-  
+  } 
 }
-
-export default App;
