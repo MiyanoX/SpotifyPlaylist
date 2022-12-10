@@ -3,18 +3,19 @@ import './App.css';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchResults } from '../SearchResults/SearchResults';
 import { Playlist } from '../Playlist/Playlist';
+import Spotify from '../../util/Spotify';
 
-const track1 = {name: 'new_track1', artist: 'new_friend', album: 'new_album', id: 1, uri: ''};
-const track2 = {name: 'new_track2', artist: 'new_friend', album: 'new_album', id: 2, uri: ''}
-const track3 = {name: 'new_track3', artist: 'new_friend', album: 'new_album', id: 3, uri: ''};
-const track4 = {name: 'new_track4', artist: 'new_friend', album: 'new_album', id: 4, uri: ''};
+const track1 = {name: 'new_track1', artist: 'new_friend', album: 'new_album', id: "1", uri: 'sd'};
+const track2 = {name: 'new_track2', artist: 'new_friend', album: 'new_album', id: "2", uri: 'asd'}
+const track3 = {name: 'new_track3', artist: 'new_friend', album: 'new_album', id: "3", uri: 'sdd'};
+const track4 = {name: 'new_track4', artist: 'new_friend', album: 'new_album', id:"4", uri: 'asd'};
 export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: [track1, track2, track3, track4],
+      searchResults: [],
       playlistName: 'My Playlist',
-      playlistTracks: [track4]
+      playlistTracks: []
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -47,13 +48,17 @@ export class App extends React.Component {
   }
 
   search(searchTerm) {
-    console.log(searchTerm);
+    let resultPromise = Spotify.search(searchTerm);
+    resultPromise.then((resolvedValue) => {
+      this.setState({searchResults: resolvedValue})
+    });
   }
 
   render() {
+    console.log(this.state.searchResults);
     return (
       <div>
-        <h1>Ja<span className="highlight">mmm</span>ing</h1>
+        <h1>Mi<span className="highlight">ya</span>no</h1>
         <div className="App">
           <SearchBar 
             onSearch={this.search}
