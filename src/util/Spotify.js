@@ -16,7 +16,6 @@ let Spotify = {
         } else {
             window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
         }
-        console.log("Access Token", accessToken);
     },
     
     search(searchTerm) {
