@@ -19,6 +19,7 @@ export class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
+    Spotify.getAccessToken();
   }
 
   updatePlaylistName(name) {
@@ -45,7 +46,7 @@ export class App extends React.Component {
     this.setState({
       playlistName: 'New Playlist',
       playlistTracks: []
-  });
+    });
     window.location.reload();
   }
 
