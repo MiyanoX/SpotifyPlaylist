@@ -61,7 +61,7 @@ export class App extends React.Component {
     console.log(this.state.searchResults);
     return (
       <div>
-        <h1>Mi<span className="highlight">ya</span>no</h1>
+        <h1>Mi<span className="highlight">yaaaaaa</span>no</h1>
         <div className="App">
           <SearchBar 
             onSearch={this.search}
