@@ -6,15 +6,12 @@ import { Playlist } from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
 
 const track1 = {name: 'new_track1', artist: 'new_friend', album: 'new_album', id: "1", uri: 'sd'};
-const track2 = {name: 'new_track2', artist: 'new_friend', album: 'new_album', id: "2", uri: 'asd'}
-const track3 = {name: 'new_track3', artist: 'new_friend', album: 'new_album', id: "3", uri: 'sdd'};
-const track4 = {name: 'new_track4', artist: 'new_friend', album: 'new_album', id:"4", uri: 'asd'};
 export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       searchResults: [],
-      playlistName: 'My Playlist',
+      playlistName: 'New Playlist',
       playlistTracks: []
     };
     this.addTrack = this.addTrack.bind(this);
@@ -42,9 +39,14 @@ export class App extends React.Component {
     this.setState({playlistTracks: currentTracks});
   }
 
-  savePlaylist() {
-    const trackURIs = this.state.map((track) => (track.uri));
-    return trackURIs
+  async savePlaylist() {
+    const trackURIs = this.state.playlistTracks.map((track) => (track.uri));
+    await Spotify.savePlaylist(this.state.playlistName, trackURIs);
+    this.setState({
+      playlistName: 'New Playlist',
+      playlistTracks: []
+  });
+    window.location.reload();
   }
 
   search(searchTerm) {
