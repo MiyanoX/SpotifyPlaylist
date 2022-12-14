@@ -1,6 +1,8 @@
 # Jammming
 
-Jammming is a `React` web app for users to search tracks and save them to playlist in Spotify. 
+Jammming is a `React` web app for users to search tracks and save them to playlist in Spotify. \
+\
+Open [http://miyano.surge.sh](http://miyano.surge.sh) to view it in your browser.
 
 ## App Instruction
 
@@ -36,6 +38,7 @@ npm start
 ```
 
 Runs the app in the development mode.\
+\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### Build
