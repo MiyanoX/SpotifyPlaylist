@@ -57,6 +57,16 @@ export class App extends React.Component {
     });
   }
 
+  displaySearchResults() {
+    let newSearchResults = [];
+    this.state.searchResults.forEach((track) => {
+      if (!this.state.playlistTracks.includes(track)) {
+        newSearchResults.push(track);
+      }
+    });
+    return newSearchResults;
+  }
+
   render() {
     console.log(this.state.searchResults);
     return (
@@ -68,7 +78,7 @@ export class App extends React.Component {
           />
           <div className="App-playlist">
             <SearchResults 
-              searchResults={this.state.searchResults}
+              searchResults={this.displaySearchResults()}
               onAdd={this.addTrack} 
             />
             <Playlist 

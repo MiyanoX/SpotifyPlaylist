@@ -1,6 +1,7 @@
 let accessToken;
 let clientID = 'd866cbcf85a742daac8ae5eb0aea9d0a';
-let redirectURI = "http://miyano.surge.sh/callback/";
+let redirectURI = "http://miyano.surge.sh/callback/"; // Use for Surge Publish
+// let redirectURI = "http://localhost:3000/callback/"; // Use for Test
 
 let Spotify = {
     getAccessToken() {
