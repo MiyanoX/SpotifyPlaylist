@@ -1,6 +1,6 @@
-# Jammming
+# Miyaaaaaano
 
-Jammming is a `React` web app for users to search tracks and save them to playlist in Spotify. \
+Miyaaaaaano is a `React` web app for users to search tracks and save them to playlist in Spotify. \
 \
 Open [http://miyano.surge.sh](http://miyano.surge.sh) to view it in your browser.
 
