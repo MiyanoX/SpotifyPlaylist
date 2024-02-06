@@ -2,7 +2,7 @@
 
 Miyaaaaaano is a `React` web app for users to search tracks and save them to playlist in Spotify. \
 \
-Open [http://miyaaaaaano.surge.sh](http://miyaaaaaano.surge.sh) to view it in your browser.
+Open [http://miyano.surge.sh](http://miyano.surge.sh) to view it in your browser.
 
 ## App Instruction
 
